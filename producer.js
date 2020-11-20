@@ -3,7 +3,7 @@ const { Kafka } = require("kafkajs");
 // create kafka
 const kafka = new Kafka({
   clientId: "my-app",
-  brokers: ['localhost:9092', 'localhost:9093', 'localhost:9094']
+  brokers: ['localhost:29092', 'localhost:39092', 'localhost:49092']
 })
 
 // create producer
@@ -13,8 +13,8 @@ const run = async () => {
   try {
     await producer.connect();
     await producer.send({
-      topic: "test-topic",
-      message: [
+      topic: "bar",
+      messages: [
         { value: "Hello Kafka :)" }
       ]
     })
@@ -22,3 +22,9 @@ const run = async () => {
     console.log(err);
   }
 }
+
+run().then(() => {
+  console.log("ok")
+})
+
+
